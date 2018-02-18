@@ -17,7 +17,7 @@ public class MainController {
     WorkflowService service;
 
     @RequestMapping("/workflow")
-    public Workflow getWorkflow(@RequestParam(value = "id") String id) {
+    public Workflow getWorkflow(@RequestParam(value = "id") Long id) {
         return service.retrieveWorkflow(id);
     }
 }
