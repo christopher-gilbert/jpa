@@ -10,17 +10,21 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "id")
 public class SubWorkflowCycle extends WorkflowCycle {
 
-    @Column(name = "property")
-    private String property;
+    @Column(name = "name")
+    private String name;
 
     public SubWorkflowCycle() {
     }
 
-    public String getProperty() {
-        return property;
+    public SubWorkflowCycle(String name) {
+        this.name = name;
     }
 
-    public void setProperty(String property) {
-        this.property = property;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

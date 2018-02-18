@@ -12,18 +12,18 @@ public class WorkflowService {
     @Autowired
     WorkflowRepository repository;
 
+    @Autowired
+    CycleFactory cycleFactory;
+
     public Workflow retrieveWorkflow(long id) {
-        Workflow result =  repository.findOne(id);
+        Workflow result = repository.findOne(id);
         return result;
 
     }
 
-    public Workflow newWorkflow(String property) {
-        Workflow wf = new Workflow();
-        SubWorkflowCycle cycle = new SubWorkflowCycle();
-        cycle.setProperty(property == null ? "test" : property);
-        wf.setCycle(cycle);
-        wf.setState("READY");
+    public Workflow newWorkflow(String state, String cycleName, String cycleState) {
+        Workflow wf = new Workflow(state);
+        wf.setCycle(cycleFactory.createCycle(cycleName, cycleState));
         repository.save(wf);
         return wf;
     }

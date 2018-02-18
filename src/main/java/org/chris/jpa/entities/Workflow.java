@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Workflow {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
@@ -21,7 +21,14 @@ public class Workflow {
     @JoinColumn(name = "cycle_id")
     private WorkflowCycle cycle;
 
-    public Workflow() {    };
+    public Workflow() {
+    }
+
+
+    public Workflow(String state) {
+        this.state = state;
+    }
+
 
     public Long getId() {
         return id;
