@@ -1,6 +1,7 @@
 package org.chris.jpa.controller;
 
 
+import org.chris.jpa.entities.SubWorkflowCycle;
 import org.chris.jpa.entities.Workflow;
 import org.chris.jpa.service.WorkflowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ public class MainController {
     WorkflowService service;
 
     @RequestMapping("/workflow")
-    public Workflow getWorkflow(@RequestParam(value = "id") Long id) {
+    public Workflow getWorkflow(@RequestParam(value = "id") Long id, @RequestParam(value = "nextCycle", required = false) String nextCycle) {
+        service.newWorkflow(nextCycle);
         return service.retrieveWorkflow(id);
     }
 }

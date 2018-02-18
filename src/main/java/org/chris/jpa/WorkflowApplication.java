@@ -1,5 +1,6 @@
 package org.chris.jpa;
 
+import org.chris.jpa.entities.SubWorkflowCycle;
 import org.chris.jpa.entities.Workflow;
 import org.chris.jpa.entities.WorkflowCycle;
 import org.chris.jpa.repository.WorkflowRepository;
@@ -19,7 +20,9 @@ public class WorkflowApplication {
     public CommandLineRunner demo(WorkflowRepository repository) {
         return (args) -> {
             Workflow wf = new Workflow();
-            wf.setCycle(new WorkflowCycle());
+            SubWorkflowCycle cycle = new SubWorkflowCycle();
+            cycle.setProperty("test");
+            wf.setCycle(cycle);
             wf.setState("READY");
             repository.save(wf);
         };

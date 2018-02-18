@@ -5,7 +5,8 @@ cycle_id number
 );
 
 create table workflow_cycle (
-id number
+id number,
+type varchar(50)
 );
 
 create table sub_workflow_cycle (

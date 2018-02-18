@@ -1,5 +1,7 @@
 package org.chris.jpa.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Workflow {
     @Column(name = "state")
     private String state;
 
+    @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cycle_id")
     private WorkflowCycle cycle;
